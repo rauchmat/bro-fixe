@@ -3,7 +3,8 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <mat-toolbar>
+    <mat-toolbar color="primary">
+      <img src="/assets/brofixe.png" alt="" class="logo"/>
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
       </button>
@@ -25,6 +26,10 @@ import {Component} from '@angular/core';
     <router-outlet></router-outlet>
   `,
   styles: [`
+    .logo {
+      height: 64px;
+    }
+
     .spacer {
       flex: 1 1 auto;
     }
@@ -32,8 +37,8 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   menuItems: MenuItem[] = [
-    { title: "Events", link: "/events"},
-    { title: "Admin", link: "/admin"},
+    {title: "Events", link: "/events"},
+    {title: "Admin", link: "/admin"},
   ];
   title = 'Events';
 
