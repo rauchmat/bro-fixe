@@ -16,10 +16,72 @@ const MICHL: BroModel =
     avatarUrl: "assets/michl.jpg"
   };
 
+const MANE: BroModel =
+  {
+    id: "3",
+    nickname: "Mane",
+    email: "michl@gmx.at",
+    avatarUrl: "assets/mane.jpg"
+  };
+
+const TIEFI: BroModel =
+  {
+    id: "4",
+    nickname: "Tiefi",
+    email: "michl@gmx.at",
+    avatarUrl: "assets/mane.jpg"
+  };
+
+const FLO: BroModel =
+  {
+    id: "5",
+    nickname: "Flo",
+    email: "michl@gmx.at",
+    avatarUrl: "assets/mane.jpg"
+  };
+
+const XANDL: BroModel =
+  {
+    id: "6",
+    nickname: "Xandl",
+    email: "michl@gmx.at",
+    avatarUrl: "assets/mane.jpg"
+  };
+
+const HIRSCHI: BroModel =
+  {
+    id: "7",
+    nickname: "Hirschi",
+    email: "michl@gmx.at",
+    avatarUrl: "assets/mane.jpg"
+  };
+
+const EICHI: BroModel =
+  {
+    id: "8",
+    nickname: "Eichi",
+    email: "michl@gmx.at",
+    avatarUrl: "assets/mane.jpg"
+  };
+
+const MINI: BroModel =
+  {
+    id: "9",
+    nickname: "MINI",
+    email: "michl@gmx.at",
+    avatarUrl: "assets/mane.jpg"
+  };
 
 export const BROS: BroModel[] = [
   MATTL,
-  MICHL
+  MICHL,
+  MANE,
+  TIEFI,
+  FLO,
+  XANDL,
+  EICHI,
+  MINI,
+  HIRSCHI
 ]
 
 export const EVENTS: EventModel[] = [

@@ -1,5 +1,5 @@
 ﻿import {Injectable} from "@angular/core";
-import {Observable, of} from "rxjs";
+import {from, Observable, of, single} from "rxjs";
 import {EventModel} from "../../api";
 import {EVENTS} from "./mocks";
 import {EventsService} from "../events/events.service";
@@ -14,5 +14,10 @@ export class MockEventsService implements EventsService {
 
   getPastEvents(): Observable<EventModel[]> {
     return of(EVENTS);
+  }
+
+  getEvent(id: string): Observable<EventModel> {
+    return from(EVENTS)
+      .pipe(single(e => e.id === id));
   }
 }
