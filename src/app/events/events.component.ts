@@ -65,6 +65,7 @@ import {EventModel} from "../../api";
 
     .event-card {
       max-width: 400px;
+      width: 100%;
     }
 
     mat-card-content {

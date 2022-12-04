@@ -11,10 +11,10 @@ import {Component} from '@angular/core';
       <span>{{title}}</span>
       <span class="spacer"></span>
       <button mat-icon-button>
-        <mat-icon>favorite</mat-icon>
+        <mat-icon>volunteer_activism</mat-icon>
       </button>
       <button mat-icon-button>
-        <mat-icon>share</mat-icon>
+        <mat-icon>account_circle</mat-icon>
       </button>
     </mat-toolbar>
     <mat-menu #menu="matMenu">
