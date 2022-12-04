@@ -23,13 +23,13 @@ import {EventModel} from "../../api";
             </div>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button>
-              <mat-icon>thumb_up</mat-icon>
-              LIKE
+            <button [routerLink]="event.id" mat-button>
+              <mat-icon>edit</mat-icon>
+              Details
             </button>
             <button mat-button>
               <mat-icon>share</mat-icon>
-              SHARE
+              Share
             </button>
           </mat-card-actions>
         </mat-card>
@@ -43,14 +43,19 @@ import {EventModel} from "../../api";
       flex-wrap: wrap;
       align-items: stretch;
       align-content: flex-start;
+      padding: 1em;
     }
 
     .event-card {
-      margin: 1em;
+      margin-bottom: 1em;
     }
 
     .event-card mat-card {
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: space-between;
     }
 
     .event-card mat-card-actions {
@@ -80,5 +85,9 @@ export class EventsComponent {
 
   getEvents() {
     this.eventsService.getPastEvents().subscribe((events: EventModel[]) => this.pastEvents = events);
+  }
+
+  edit(event: EventModel) {
+
   }
 }

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {EventsComponent} from "./events/events.component";
 import {AdminComponent} from "./admin/admin.component";
+import {EVENTS_ROUTE} from "./events/events.routing";
 
 const routes: Routes = [
-  { path: 'events', component: EventsComponent },
+  EVENTS_ROUTE,
   { path: 'admin', component: AdminComponent }
 ];
 

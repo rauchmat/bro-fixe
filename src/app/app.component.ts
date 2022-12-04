@@ -27,7 +27,7 @@ import {Component} from '@angular/core';
   `,
   styles: [`
     .logo {
-      height: 64px;
+      height: 80%;
     }
 
     .spacer {

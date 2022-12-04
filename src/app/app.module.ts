@@ -16,7 +16,7 @@ import {MocksModule} from "./mocks/mocks.module";
 @NgModule({
   declarations: [
     AppComponent,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
