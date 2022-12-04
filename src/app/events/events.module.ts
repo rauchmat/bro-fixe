@@ -6,6 +6,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {RouterModule} from "@angular/router";
 import {EventsDetailsComponent} from "./events-details.component";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 
 @NgModule({
@@ -18,8 +21,12 @@ import {EventsDetailsComponent} from "./events-details.component";
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class EventsModule {
+
 }
