@@ -9,6 +9,7 @@ import {EventsDetailsComponent} from "./events-details.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {MatListModule} from "@angular/material/list";
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatInputModule} from "@angular/material/input";
     RouterModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule
   ]
 })
 export class EventsModule {

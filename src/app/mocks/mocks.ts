@@ -20,7 +20,7 @@ const MANE: BroModel =
   {
     id: "3",
     nickname: "Mane",
-    email: "michl@gmx.at",
+    email: "mane@gmx.at",
     avatarUrl: "assets/mane.jpg"
   };
 
@@ -28,48 +28,48 @@ const TIEFI: BroModel =
   {
     id: "4",
     nickname: "Tiefi",
-    email: "michl@gmx.at",
-    avatarUrl: "assets/mane.jpg"
+    email: "tiefi@gmx.at",
+    avatarUrl: "assets/tiefi.jpg"
   };
 
 const FLO: BroModel =
   {
     id: "5",
     nickname: "Flo",
-    email: "michl@gmx.at",
-    avatarUrl: "assets/mane.jpg"
+    email: "floesche@gmx.at",
+    avatarUrl: "assets/flo.jpg"
   };
 
 const XANDL: BroModel =
   {
     id: "6",
     nickname: "Xandl",
-    email: "michl@gmx.at",
-    avatarUrl: "assets/mane.jpg"
+    email: "xandl@gmx.at",
+    avatarUrl: "assets/xandl.jpg"
   };
 
 const HIRSCHI: BroModel =
   {
     id: "7",
     nickname: "Hirschi",
-    email: "michl@gmx.at",
-    avatarUrl: "assets/mane.jpg"
+    email: "hirsch@gmx.at",
+    avatarUrl: "assets/default.jpg"
   };
 
 const EICHI: BroModel =
   {
     id: "8",
     nickname: "Eichi",
-    email: "michl@gmx.at",
-    avatarUrl: "assets/mane.jpg"
+    email: "eichi@gmx.at",
+    avatarUrl: "assets/default.jpg"
   };
 
 const MINI: BroModel =
   {
     id: "9",
-    nickname: "MINI",
-    email: "michl@gmx.at",
-    avatarUrl: "assets/mane.jpg"
+    nickname: "Mini",
+    email: "mini@gmx.at",
+    avatarUrl: "assets/mini.jpg"
   };
 
 export const BROS: BroModel[] = [

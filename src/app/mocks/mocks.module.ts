@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MockEventsService} from "./mock-services";
+import {MockBrosService, MockEventsService} from "./mock-services";
 import {EventsService} from "../events/events.service";
+import {BrosService} from "../admin/bros/bros.service";
 
 
 @NgModule({
@@ -9,7 +10,9 @@ import {EventsService} from "../events/events.service";
   imports: [
     CommonModule
   ],
-  providers: [{provide: EventsService, useClass: MockEventsService}]
+  providers: [
+    {provide: EventsService, useClass: MockEventsService},
+    {provide: BrosService, useClass: MockBrosService}]
 })
 export class MocksModule {
 }
