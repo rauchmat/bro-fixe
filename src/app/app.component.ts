@@ -38,6 +38,7 @@ import {Component} from '@angular/core';
 export class AppComponent {
   menuItems: MenuItem[] = [
     {title: "Events", link: "/events"},
+    {title: "Organisator", link: "/organizer"},
     {title: "Admin", link: "/admin"},
   ];
   title = 'Events';
