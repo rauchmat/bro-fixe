@@ -21,6 +21,12 @@
         <Content Include="..\.dockerignore">
           <Link>.dockerignore</Link>
         </Content>
+        <Content Include="ClientApp\angular.json" />
+        <Content Include="ClientApp\package-lock.json" />
+        <Content Include="ClientApp\package.json" />
+        <Content Include="ClientApp\tsconfig.app.json" />
+        <Content Include="ClientApp\tsconfig.json" />
+        <Content Include="ClientApp\tsconfig.spec.json" />
         <None Remove="$(SpaRoot)**" />
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
     </ItemGroup>
