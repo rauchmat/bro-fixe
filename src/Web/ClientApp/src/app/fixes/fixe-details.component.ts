@@ -1,20 +1,19 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute} from "@angular/router";
-import {EventsService} from "./events.service";
-import {BroModel, EventModel} from "../../api";
+import {FixesService} from "./fixes.service";
+import {BroModel, FixeModel} from "../../api";
 import {BrosService} from "../admin/bros/bros.service";
-import {Observable} from "rxjs";
 
 @Component({
-  selector: 'app-events-details',
+  selector: 'app-fixe-details',
   template: `
     <div class="form-box mat-elevation-z3">
-      <img class="header-image" [src]="event.backgroundUrl" *ngIf="event.backgroundUrl != null" alt=""/>
+      <img class="header-image" [src]="fixe.backgroundUrl" *ngIf="fixe.backgroundUrl != null" alt=""/>
       <div class="form-container">
-        <h2>{{event.title}}</h2>
+        <h2>{{fixe.title}}</h2>
 
-        <form [formGroup]="eventForm">
+        <form [formGroup]="fixeForm">
 
           <mat-form-field>
             <mat-label>Titel</mat-label>
@@ -106,8 +105,8 @@ import {Observable} from "rxjs";
     }
   `]
 })
-export class EventsDetailsComponent {
-  eventForm = new FormGroup({
+export class FixeDetailsComponent {
+  fixeForm = new FormGroup({
     title: new FormControl(''),
     location: new FormControl(''),
     start: new FormControl(''),
@@ -115,33 +114,33 @@ export class EventsDetailsComponent {
       nickname: new FormControl('')
     }),
   });
-  event!: EventModel;
+  fixe!: FixeModel;
   allBros!: BroModel[];
 
   constructor(
     private route: ActivatedRoute,
-    private eventsService: EventsService,
+    private fixesService: FixesService,
     private brosService: BrosService) {
   }
 
   ngOnInit(): void {
     this.getEvent();
     this.getBros();
-    this.eventForm.patchValue(this.event);
+    this.fixeForm.patchValue(this.fixe);
   }
 
   getEvent(): void {
     this.route.data
       .subscribe(data => {
-        this.event = <EventModel>data["event"];
+        this.fixe = <FixeModel>data["fixe"];
       });
   }
 
   getHeaderBackgroundImage(): string | undefined {
-    if (!this.event.backgroundUrl)
+    if (!this.fixe.backgroundUrl)
       return undefined;
 
-    return "url('" + this.event.backgroundUrl + "')";
+    return "url('" + this.fixe.backgroundUrl + "')";
   }
 
   private getBros() {

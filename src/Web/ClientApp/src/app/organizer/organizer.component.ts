@@ -100,7 +100,11 @@ export class OrganizerComponent {
     this.firstFormGroup = this.formBuilder.group({
       location: [''],
       poll: FormGroup
-    })
+    });
+
+    this.secondFormGroup = this.formBuilder.group({
+      secondCtrl: ['']
+    });
 
     this.filteredDateOptions = this.dateOptionControl.valueChanges.pipe(
       startWith(null),

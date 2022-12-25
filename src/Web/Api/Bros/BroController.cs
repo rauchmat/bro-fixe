@@ -25,4 +25,15 @@ public class BroController : ApiController
 
         return Ok(bros.Select(BroMapper.ToModel));
     }
+    
+    [HttpGet("{id}")]
+    [ProducesResponseType(typeof(BroModel), (int) HttpStatusCode.OK)]
+    public async Task<IActionResult> GetBro(Guid id)
+    {
+        var bro = await _context.Bros.SingleOrDefaultAsync(f => f.Id == id);
+        if (bro == null)
+            return NotFound();
+
+        return Ok(BroMapper.ToModel(bro));
+    }
 }

@@ -16,7 +16,7 @@ import { HttpClient, HttpHeaders, HttpResponse, HttpResponseBase } from '@angula
 export const API_BASE_URL = new InjectionToken<string>('API_BASE_URL');
 
 @Injectable()
-export class EventClient {
+export class FixeClient {
     private http: HttpClient;
     private baseUrl: string;
     protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
@@ -26,8 +26,8 @@ export class EventClient {
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
     }
 
-    getAllEvents(): Observable<EventModel[]> {
-        let url_ = this.baseUrl + "/api/events";
+    getPastFixes(): Observable<FixeModel[]> {
+        let url_ = this.baseUrl + "/api/fixes";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -39,20 +39,20 @@ export class EventClient {
         };
 
         return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
-            return this.processGetAllEvents(response_);
+            return this.processGetPastFixes(response_);
         })).pipe(_observableCatch((response_: any) => {
             if (response_ instanceof HttpResponseBase) {
                 try {
-                    return this.processGetAllEvents(response_ as any);
+                    return this.processGetPastFixes(response_ as any);
                 } catch (e) {
-                    return _observableThrow(e) as any as Observable<EventModel[]>;
+                    return _observableThrow(e) as any as Observable<FixeModel[]>;
                 }
             } else
-                return _observableThrow(response_) as any as Observable<EventModel[]>;
+                return _observableThrow(response_) as any as Observable<FixeModel[]>;
         }));
     }
 
-    protected processGetAllEvents(response: HttpResponseBase): Observable<EventModel[]> {
+    protected processGetPastFixes(response: HttpResponseBase): Observable<FixeModel[]> {
         const status = response.status;
         const responseBlob =
             response instanceof HttpResponse ? response.body :
@@ -62,7 +62,57 @@ export class EventClient {
         if (status === 200) {
             return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as EventModel[];
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as FixeModel[];
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
+
+    getFixe(id: string): Observable<FixeModel> {
+        let url_ = this.baseUrl + "/api/fixes/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetFixe(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetFixe(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<FixeModel>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<FixeModel>;
+        }));
+    }
+
+    protected processGetFixe(response: HttpResponseBase): Observable<FixeModel> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as FixeModel;
             return _observableOf(result200);
             }));
         } else if (status !== 200 && status !== 204) {
@@ -131,9 +181,59 @@ export class BroClient {
         }
         return _observableOf(null as any);
     }
+
+    getBro(id: string): Observable<BroModel> {
+        let url_ = this.baseUrl + "/api/bros/{id}";
+        if (id === undefined || id === null)
+            throw new Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetBro(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetBro(response_ as any);
+                } catch (e) {
+                    return _observableThrow(e) as any as Observable<BroModel>;
+                }
+            } else
+                return _observableThrow(response_) as any as Observable<BroModel>;
+        }));
+    }
+
+    protected processGetBro(response: HttpResponseBase): Observable<BroModel> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (response as any).error instanceof Blob ? (response as any).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as BroModel;
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap((_responseText: string) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf(null as any);
+    }
 }
 
-export interface EventModel {
+export interface FixeModel {
     id: string;
     title: string;
     location: string;

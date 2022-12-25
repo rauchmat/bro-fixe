@@ -9,9 +9,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {AdminComponent} from './admin/admin.component';
-import {EventsModule} from "./events/events.module";
 import {MocksModule} from "./mocks/mocks.module";
 import {OrganizerModule} from "./organizer/organizer.module";
+import {FixesModule} from "./fixes/fixes.module";
+import {ApiModule} from "./api/api.module";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import {OrganizerModule} from "./organizer/organizer.module";
     MatIconModule,
     MatButtonModule,
     MatMenuModule,
-    EventsModule,
+    FixesModule,
     OrganizerModule,
     MocksModule
   ],

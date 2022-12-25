@@ -1,4 +1,4 @@
-﻿import {BroModel, EventModel} from '../../api';
+﻿import {BroModel, FixeModel} from '../../api';
 
 const MATTL: BroModel =
   {
@@ -84,7 +84,7 @@ export const BROS: BroModel[] = [
   HIRSCHI
 ]
 
-export const EVENTS: EventModel[] = [
+export const FIXES: FixeModel[] = [
   {
     id: "1",
     title: "Bro Fixe November 2022",

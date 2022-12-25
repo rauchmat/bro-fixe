@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {NavigationEnd, Router} from "@angular/router";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -37,14 +39,28 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   menuItems: MenuItem[] = [
-    {title: "Events", link: "/events"},
+    {title: "Fixes", link: "/fixes"},
     {title: "Organisator", link: "/organizer"},
     {title: "Admin", link: "/admin"},
   ];
-  title = 'Events';
+  title!: string;
+
+  constructor(private router: Router) {
+  }
+
+  ngOnInit() {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(e => this.updateSelectedItem((e as NavigationEnd).url.split("#")[0]));
+  }
 
   onMenuItemClick(title: string) {
     this.title = title;
+  }
+
+  private updateSelectedItem(url: string) {
+    let selectedMenuItem = this.menuItems.filter(mi => url.startsWith(mi.link))[0];
+    this.title = selectedMenuItem.title;
   }
 }
 

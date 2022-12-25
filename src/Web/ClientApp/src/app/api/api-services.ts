@@ -1,42 +1,39 @@
 ﻿import {Injectable} from "@angular/core";
 import {from, Observable, of, single} from "rxjs";
-import {BroModel, FixeModel} from "../../api";
-import {BROS, FIXES} from "./mocks";
+import {BroClient, BroModel, FixeClient, FixeModel} from "../../api";
 import {BrosService} from "../admin/bros/bros.service";
 import {FixesService} from "../fixes/fixes.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class MockFixesService implements FixesService {
+export class ApiFixesService implements FixesService {
 
-  constructor() {
+  constructor(private client: FixeClient) {
   }
 
   getPastFixes(): Observable<FixeModel[]> {
-    return of(FIXES);
+    return this.client.getPastFixes();
   }
 
   getFixe(id: string): Observable<FixeModel> {
-    return from(FIXES)
-      .pipe(single(e => e.id === id));
+    return this.client.getFixe(id);
   }
 }
 
 @Injectable({
   providedIn: 'root'
 })
-export class MockBrosService implements BrosService {
+export class ApiBrosService implements BrosService {
 
-  constructor() {
+  constructor(private client: BroClient) {
   }
 
   getAllBros(): Observable<BroModel[]> {
-    return of(BROS);
+    return this.client.getAllBros();
   }
 
   getBro(id: string): Observable<BroModel> {
-    return from(BROS)
-      .pipe(single(e => e.id === id));
+    return this.client.getBro(id);
   }
 }

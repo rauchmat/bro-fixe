@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MockBrosService, MockFixesService} from "./mock-services";
 import {BrosService} from "../admin/bros/bros.service";
 import {FixesService} from "../fixes/fixes.service";
+import {ApiBrosService, ApiFixesService} from "./api-services";
 
 
 @NgModule({
@@ -11,8 +11,8 @@ import {FixesService} from "../fixes/fixes.service";
     CommonModule
   ],
   providers: [
-    {provide: FixesService, useClass: MockFixesService},
-    {provide: BrosService, useClass: MockBrosService}]
+    {provide: FixesService, useClass: ApiFixesService},
+    {provide: BrosService, useClass: ApiBrosService}]
 })
-export class MocksModule {
+export class ApiModule {
 }

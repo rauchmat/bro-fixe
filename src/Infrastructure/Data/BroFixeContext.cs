@@ -9,10 +9,17 @@ public class BroFixeContext : DbContext
     {
     }
 
-    public DbSet<Bro> Bros { get; set; } = default!;
+    public DbSet<Bro> Bros => Set<Bro>();
+    public DbSet<Fixe> Fixes => Set<Fixe>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Fixe>()
+            .HasOne(p => p.Organizer)
+            .WithMany()
+            .OnDelete(DeleteBehavior.Restrict)
+            .IsRequired();
     }
 }

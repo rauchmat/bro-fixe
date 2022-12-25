@@ -6,8 +6,18 @@ namespace BroFixe.Infrastructure.Data;
 
 public class BroFixeContextSeed
 {
+    private static readonly Bro Mattl = new Bro(nickname: "Mattl", email: "rauchmat@gmail.com", avatarUrl: "");
+    private static readonly Bro Michl = new Bro(nickname: "Michl", email: "meikkel@gmail.com", avatarUrl: "");
+    private static readonly Bro Mane = new Bro(nickname: "Mane", email: "mane@gmail.com", avatarUrl: "");
+
     public async Task SeedAsync(BroFixeContext context, IWebHostEnvironment env, ILogger<BroFixeContextSeed> logger)
     {
+        if (!context.Bros.Any())
+        {
+            await context.Bros.AddRangeAsync(GetPreconfiguredBros());
+            await context.SaveChangesAsync();
+        }
+        
         if (!context.Bros.Any())
         {
             await context.Bros.AddRangeAsync(GetPreconfiguredBros());
@@ -19,9 +29,18 @@ public class BroFixeContextSeed
     {
         return new[]
         {
-            new Bro {Id = Guid.NewGuid(), Nickname = "Mattl", Email = "rauchmat@gmail.com", AvatarUrl = ""},
-            new Bro {Id = Guid.NewGuid(), Nickname = "Michl", Email = "meikkel@gmail.com", AvatarUrl = ""},
-            new Bro {Id = Guid.NewGuid(), Nickname = "Mane", Email = "mane@gmail.com", AvatarUrl = ""},
+            Mattl,
+            Michl,
+            Mane,
+        };
+    }
+    
+    private Fixe[] GetPreconfiguredFixes()
+    {
+        return new[]
+        {
+            new Fixe("Bro Fixe Oktober 2022", "Gasthaus Stern", new DateTime(2022, 10, 17, 18, 30, 0), Michl),
+            new Fixe("Bro Fixe November 2022", "Harry's Augustin", new DateTime(2022, 11, 12, 19, 0, 0), Mattl)
         };
     }
 }

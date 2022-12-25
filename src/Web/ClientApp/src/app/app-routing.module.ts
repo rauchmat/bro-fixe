@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AdminComponent} from "./admin/admin.component";
-import {EVENTS_ROUTE} from "./events/events.routing";
 import {ORGANIZER_ROUTES} from "./organizer/organizer.routing";
+import {FIXES_ROUTE} from "./fixes/fixes.routing";
 
 const routes: Routes = [
-  EVENTS_ROUTE,
+  FIXES_ROUTE,
   ORGANIZER_ROUTES,
   { path: 'admin', component: AdminComponent }
 ];

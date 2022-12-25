@@ -35,10 +35,10 @@ public class OpenApiGenerator
             CSharpGeneratorSettings =
             {
                 Namespace = @namespace,
-                DateType = "NodaTime.LocalDate",
-                DateTimeType = "NodaTime.LocalDateTime",
-                TimeType = "NodaTime.LocalTime",
-                TimeSpanType = "NodaTime.LocalTime",
+                // DateType = "NodaTime.LocalDate",
+                // DateTimeType = "NodaTime.LocalDateTime",
+                // TimeType = "NodaTime.LocalTime",
+                // TimeSpanType = "NodaTime.LocalTime",
                 ArrayType = "System.Collections.Generic.IList",
                 ArrayInstanceType = "System.Collections.Generic.List",
                 RequiredPropertiesMustBeDefined =
