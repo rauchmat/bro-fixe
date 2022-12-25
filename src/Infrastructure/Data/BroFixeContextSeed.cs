@@ -1,8 +1,8 @@
-using Domain.Model;
+using BroFixe.Domain.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace Infrastructure.Data;
+namespace BroFixe.Infrastructure.Data;
 
 public class BroFixeContextSeed
 {

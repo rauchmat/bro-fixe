@@ -1,8 +1,7 @@
-﻿using Domain.Model;
+﻿using BroFixe.Domain.Model;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
-namespace Infrastructure.Data;
+namespace BroFixe.Infrastructure.Data;
 
 public class BroFixeContext : DbContext
 {
@@ -10,7 +9,7 @@ public class BroFixeContext : DbContext
     {
     }
 
-    public DbSet<Bro> Bros { get; set; }
+    public DbSet<Bro> Bros { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

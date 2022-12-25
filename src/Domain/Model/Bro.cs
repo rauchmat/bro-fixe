@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Model;
+namespace BroFixe.Domain.Model;
 
 public class Bro
 {
@@ -11,9 +11,10 @@ public class Bro
 
     [Required]
     [StringLength(50)]
-    public string Nickname { get; set; }
+    public string Nickname { get; set; } = default!;
 
-    public string Email { get; set; }
+    [Required]
+    public string Email { get; set; } = default!;
 
-    public string AvatarUrl { get; set; }
+    public string? AvatarUrl { get; set; }
 }

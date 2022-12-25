@@ -1121,14 +1121,14 @@
           }
         }
       },
-      "Domain/1.0.0": {
+      "BroFixe.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
-          "bin/placeholder/Domain.dll": {}
+          "bin/placeholder/BroFixe.Domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Domain.dll": {}
+          "bin/placeholder/BroFixe.Domain.dll": {}
         }
       }
     }
@@ -3418,7 +3418,7 @@
         "version.txt"
       ]
     },
-    "Domain/1.0.0": {
+    "BroFixe.Domain/1.0.0": {
       "type": "project",
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
@@ -3426,7 +3426,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "Domain >= 1.0.0",
+      "BroFixe.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0"
     ]
@@ -3439,7 +3439,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "C:\\dev\\projects\\bro-fixe\\src\\Infrastructure\\Infrastructure.csproj",
-      "projectName": "Infrastructure",
+      "projectName": "BroFixe.Infrastructure",
       "projectPath": "C:\\dev\\projects\\bro-fixe\\src\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\matthias.rauch\\.nuget\\packages\\",
       "outputPath": "C:\\dev\\projects\\bro-fixe\\src\\Infrastructure\\obj\\",
@@ -3469,6 +3469,7 @@
         }
       },
       "warningProperties": {
+        "allWarningsAsErrors": true,
         "warnAsError": [
           "NU1605"
         ]

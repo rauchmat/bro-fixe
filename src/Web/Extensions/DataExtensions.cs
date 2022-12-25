@@ -1,4 +1,4 @@
-﻿using Infrastructure.Data;
+﻿using BroFixe.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace BroFixe.Web.Extensions;

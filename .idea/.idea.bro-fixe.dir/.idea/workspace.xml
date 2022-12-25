@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6440d6e4-26f9-49c7-a556-7904336586e2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/angular.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/admin.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/admin.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/admin/bros/bros.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/event.resolver.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/events-details.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/events.component.spec.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/events.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/events.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/events.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/events/events.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/mocks/mock-services.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/mocks/mocks.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/mocks/mocks.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/organizer/organizer.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/organizer/organizer.module.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/organizer/organizer.routing.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/brofixe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/default.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/flo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/harrys-augustin.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/mane.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/mattl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/michl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/mini.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/stern.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/tiefi.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/xandl.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.spec.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="origin/main" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2IPj7jKlUov7Kwr0heGiLY1RBYL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\dev\\projects\\bro-fixe\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6440d6e4-26f9-49c7-a556-7904336586e2" name="Changes" comment="" />
+      <created>1670089946582</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670089946582</updated>
+      <workItem from="1670089948558" duration="26209000" />
+      <workItem from="1670601436921" duration="18783000" />
+    </task>
+    <task id="LOCAL-00001" summary="add angular material">
+      <created>1670092799240</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670092799240</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add angular material">
+      <created>1670093183108</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670093183108</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add angular material">
+      <created>1670093196646</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1670093196646</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add angular material">
+      <created>1670099524253</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1670099524253</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add angular material">
+      <created>1670100410951</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1670100410951</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add first components">
+      <created>1670101457407</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670101457407</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add first components">
+      <created>1670101575154</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670101575154</updated>
+    </task>
+    <task id="LOCAL-00008" summary="events">
+      <created>1670108103968</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670108103968</updated>
+    </task>
+    <task id="LOCAL-00009" summary="logo">
+      <created>1670109682892</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670109682892</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add event details">
+      <created>1670149454593</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670149454593</updated>
+    </task>
+    <task id="LOCAL-00011" summary="minor improvments">
+      <created>1670169365821</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1670169365821</updated>
+    </task>
+    <task id="LOCAL-00012" summary="event details formm">
+      <created>1670171043786</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670171043786</updated>
+    </task>
+    <task id="LOCAL-00013" summary="event details">
+      <created>1670173207197</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1670173207197</updated>
+    </task>
+    <task id="LOCAL-00014" summary="form layout with box">
+      <created>1670603778714</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1670603778714</updated>
+    </task>
+    <task id="LOCAL-00015" summary="form layout with box">
+      <created>1670606950422</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1670606950423</updated>
+    </task>
+    <task id="LOCAL-00016" summary="form layout with box">
+      <created>1670615971955</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1670615971955</updated>
+    </task>
+    <task id="LOCAL-00017" summary="organizer module">
+      <created>1670623918501</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1670623918501</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="add angular material" />
+    <MESSAGE value="add first components" />
+    <MESSAGE value="events" />
+    <MESSAGE value="logo" />
+    <MESSAGE value="add event details" />
+    <MESSAGE value="minor improvments" />
+    <MESSAGE value="event details formm" />
+    <MESSAGE value="event details" />
+    <MESSAGE value="form layout with box" />
+    <MESSAGE value="organizer module" />
+    <option name="LAST_COMMIT_MESSAGE" value="organizer module" />
+  </component>
+</project>

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Infrastructure.Data;
+namespace BroFixe.Infrastructure.Data;
 
 public class DesignTimeBroFixeContextFactory : IDesignTimeDbContextFactory<BroFixeContext>
 {

@@ -1,14 +1,16 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using BroFixe.Infrastructure.Data;
 using BroFixe.Web;
 using BroFixe.Web.Extensions;
-using Infrastructure.Data;
+using BroFixe.Web.Infrastructure.OpenApi;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateLogger();
+
 try
 {
     Log.Information("Configuring web host ({ApplicationContext})...", Constants.AppName);
@@ -26,9 +28,17 @@ try
         options.UseSqlServer(builder.Configuration["Data:ConnectionString"]));
     builder.Services.AddControllersWithViews();
     builder.Services.AddSwaggerDocument();
-    
+    builder.Services.ConfigureSwagger(WebOpenApiDefinitions.All);
+
 
     var app = builder.Build();
+
+
+    if (ShouldGenerateApiClients(args))
+    {
+        await OpenApiGenerator.GenerateApiClients(args[1], args[2], app);
+        return 0;
+    }
 
 // Configure the HTTP request pipeline.
     if (!app.Environment.IsDevelopment())
@@ -50,10 +60,10 @@ try
         pattern: "{controller}/{action=Index}/{id?}");
 
     app.MapFallbackToFile("index.html");
-    
+
     Log.Information("Applying migrations ({ApplicationContext})...", Constants.AppName);
     await app.ApplyMigrationsAndSeedData();
-    
+
     app.Run();
     return 0;
 }
@@ -65,4 +75,9 @@ catch (Exception ex)
 finally
 {
     Log.CloseAndFlush();
+}
+
+bool ShouldGenerateApiClients(IReadOnlyList<string> args)
+{
+    return args.Count > 0 && args[0] == "generate-api-clients";
 }

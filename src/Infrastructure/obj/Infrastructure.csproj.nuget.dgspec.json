@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\dev\\projects\\bro-fixe\\src\\Domain\\Domain.csproj",
-        "projectName": "Domain",
+        "projectName": "BroFixe.Domain",
         "projectPath": "C:\\dev\\projects\\bro-fixe\\src\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\matthias.rauch\\.nuget\\packages\\",
         "outputPath": "C:\\dev\\projects\\bro-fixe\\src\\Domain\\obj\\",
@@ -34,6 +34,7 @@
           }
         },
         "warningProperties": {
+          "allWarningsAsErrors": true,
           "warnAsError": [
             "NU1605"
           ]
@@ -66,7 +67,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\dev\\projects\\bro-fixe\\src\\Infrastructure\\Infrastructure.csproj",
-        "projectName": "Infrastructure",
+        "projectName": "BroFixe.Infrastructure",
         "projectPath": "C:\\dev\\projects\\bro-fixe\\src\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\matthias.rauch\\.nuget\\packages\\",
         "outputPath": "C:\\dev\\projects\\bro-fixe\\src\\Infrastructure\\obj\\",
@@ -96,6 +97,7 @@
           }
         },
         "warningProperties": {
+          "allWarningsAsErrors": true,
           "warnAsError": [
             "NU1605"
           ]
