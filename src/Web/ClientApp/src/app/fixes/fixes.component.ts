@@ -13,7 +13,7 @@ import {FixeModel} from "../../api";
             <mat-card-title>{{fixe.title}}</mat-card-title>
             <mat-card-subtitle>{{fixe.location}}</mat-card-subtitle>
           </mat-card-header>
-          <img mat-card-image [src]="fixe.backgroundUrl" [alt]="fixe.location">
+          <img *ngIf="fixe.backgroundUrl != null" mat-card-image [src]="fixe.backgroundUrl" [alt]="fixe.location">
           <mat-card-content>
             <div>
               <span>Organisator: </span><span>{{fixe.organizer.nickname}}</span>
