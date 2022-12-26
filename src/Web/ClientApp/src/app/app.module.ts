@@ -13,6 +13,7 @@ import {MocksModule} from "./mocks/mocks.module";
 import {OrganizerModule} from "./organizer/organizer.module";
 import {FixesModule} from "./fixes/fixes.module";
 import {ApiModule} from "./api/api.module";
+import {API_BASE_URL} from "../api";
 
 @NgModule({
   declarations: [
@@ -29,9 +30,11 @@ import {ApiModule} from "./api/api.module";
     MatMenuModule,
     FixesModule,
     OrganizerModule,
-    MocksModule
+    ApiModule
   ],
-  providers: [],
+  providers: [
+    {provide: API_BASE_URL, useValue: '.'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

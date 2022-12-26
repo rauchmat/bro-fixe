@@ -21,7 +21,10 @@ public class FixeController : ApiController
     [ProducesResponseType(typeof(IEnumerable<FixeModel>), (int) HttpStatusCode.OK)]
     public async Task<IActionResult> GetPastFixes()
     {
-        var bros = await _context.Fixes.OrderByDescending(f => f.Start).ToListAsync();
+        var bros = await _context.Fixes
+            .Include(f => f.Organizer)
+            .OrderByDescending(f => f.Start)
+            .ToListAsync();
 
         return Ok(bros.Select(FixeMapper.ToModel));
     }
@@ -30,7 +33,10 @@ public class FixeController : ApiController
     [ProducesResponseType(typeof(FixeModel), (int) HttpStatusCode.OK)]
     public async Task<IActionResult> GetFixe(Guid id)
     {
-        var fixe = await _context.Fixes.SingleOrDefaultAsync(f => f.Id == id);
+        var fixe = await _context.Fixes
+            .Include(f => f.Organizer)
+            .SingleOrDefaultAsync(f => f.Id == id);
+        
         if (fixe == null)
             return NotFound();
 

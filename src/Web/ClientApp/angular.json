@@ -76,7 +76,8 @@
               "browserTarget": "bro-fixe:build:production"
             },
             "development": {
-              "browserTarget": "bro-fixe:build:development"
+              "browserTarget": "bro-fixe:build:development",
+              "proxyConfig": "proxy.conf.js"
             }
           },
           "defaultConfiguration": "development"

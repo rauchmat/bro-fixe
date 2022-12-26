@@ -18,9 +18,9 @@ public class BroFixeContextSeed
             await context.SaveChangesAsync();
         }
         
-        if (!context.Bros.Any())
+        if (!context.Fixes.Any())
         {
-            await context.Bros.AddRangeAsync(GetPreconfiguredBros());
+            await context.Fixes.AddRangeAsync(GetPreconfiguredFixes());
             await context.SaveChangesAsync();
         }
     }
