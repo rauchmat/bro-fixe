@@ -12,10 +12,9 @@ public static class DataExtensions
         await db.Database.MigrateAsync();
 
         var seeder = new BroFixeContextSeed();
-        var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
         var logger = scope.ServiceProvider.GetRequiredService<ILogger<BroFixeContextSeed>>();
 
-        await seeder.SeedAsync(db, env, logger);
+        await seeder.SeedAsync(db, logger);
         return app;
     }
 }

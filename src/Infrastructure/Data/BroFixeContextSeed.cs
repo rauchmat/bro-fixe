@@ -1,5 +1,4 @@
 using BroFixe.Domain.Model;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace BroFixe.Infrastructure.Data;
@@ -10,7 +9,7 @@ public class BroFixeContextSeed
     private static readonly Bro Michl = new(nickname: "Michl", email: "meikkel@gmail.com", avatarUrl: "assets/michl.jpg");
     private static readonly Bro Mane = new(nickname: "Mane", email: "mane@gmail.com", avatarUrl: "assets/mane.jpg");
 
-    public async Task SeedAsync(BroFixeContext context, IWebHostEnvironment env, ILogger<BroFixeContextSeed> logger)
+    public async Task SeedAsync(BroFixeContext context, ILogger<BroFixeContextSeed> logger)
     {
         if (!context.Bros.Any())
         {
