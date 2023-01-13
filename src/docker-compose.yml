@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+
+  seq:
+    image: datalust/seq:latest
+
+  sql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+  
+  web:
+    image: ${REGISTRY:-bro-fixe}/web:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Web/Dockerfile
+    depends_on:
+      - sql

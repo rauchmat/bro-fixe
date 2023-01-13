@@ -1,11 +1,12 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using BroFixe.Infrastructure.Data;
-using BroFixe.Web;
 using BroFixe.Web.Extensions;
 using BroFixe.Web.Infrastructure.OpenApi;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using Serilog.Core;
+using Constants = BroFixe.Web.Constants;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -15,6 +16,7 @@ try
 {
     Log.Information("Configuring web host ({ApplicationContext})...", Constants.AppName);
     var builder = WebApplication.CreateBuilder(args);
+    Log.Logger = CreateLoggerConfiguration(builder).CreateLogger();
     builder.Host.UseSerilog();
     builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
         .ConfigureContainer<ContainerBuilder>(containerBuilder =>
@@ -22,10 +24,12 @@ try
             //containerBuilder.RegisterModule<>();
         });
 
-// Add services to the container.
+    // Add services to the container.
 
-    builder.Services.AddDbContext<BroFixeContext>(options =>
-        options.UseSqlServer(builder.Configuration["Data:ConnectionString"]));
+    var connectionString = builder.Configuration["Data:ConnectionString"];
+    Log.Logger.Information("Using ConnectionString {ConnectionString}", connectionString);
+
+    builder.Services.AddDbContext<BroFixeContext>(options => options.UseSqlServer(connectionString));
     builder.Services.AddControllersWithViews();
     builder.Services.AddSwaggerDocument();
     builder.Services.ConfigureSwagger(WebOpenApiDefinitions.All);
@@ -89,4 +93,16 @@ finally
 bool ShouldGenerateApiClients(IReadOnlyList<string> args)
 {
     return args.Count > 0 && args[0] == "generate-api-clients";
+}
+
+LoggerConfiguration CreateLoggerConfiguration(WebApplicationBuilder webApplicationBuilder)
+{
+    var loggerConfiguration = new LoggerConfiguration()
+        .WriteTo.Console();
+
+    var seqUrl = webApplicationBuilder.Configuration["Logging:SeqUrl"];
+    if (seqUrl != null)
+        loggerConfiguration.WriteTo.Seq(seqUrl);
+
+    return loggerConfiguration;
 }
