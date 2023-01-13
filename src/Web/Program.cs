@@ -64,15 +64,6 @@ try
         pattern: "{controller}/{action=Index}/{id?}");
 
     app.MapFallbackToFile("index.html");
-    // if (app.Environment.IsDevelopment())
-    //     app.UseSpa(
-    //         spa =>
-    //         {
-    //             spa.Options.SourcePath = "ClientApp";
-    //             spa.UseProxyToSpaDevelopmentServer("https://localhost:4500");
-    //         });
-    // else
-    //     app.UseEssentialsSpaStaticFiles(env);
 
     Log.Information("Applying migrations ({ApplicationContext})...", Constants.AppName);
     await app.ApplyMigrationsAndSeedData();
