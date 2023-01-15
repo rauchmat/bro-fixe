@@ -1,21 +1,20 @@
-name: Docker Image CI
+name: Build and publish Docker image bro-fixe-web
 
 on:
   push:
-    - 'main'
-  tags:
-    - 'v*'
+    branches:
+      - main
+    tags:
+      - v*
   pull_request:
 
 env:
   REGISTRY: rauchmat
   IMAGE_NAME: bro-fixe-web
+
 jobs:
-
-  build:
-
+  build-and-push-image:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -33,10 +32,11 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-     -  name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        context: src
+        file: src/Web/Dockerfile
+        push: ${{ github.event_name != 'pull_request' }}
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
