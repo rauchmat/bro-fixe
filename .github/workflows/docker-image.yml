@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./src --file Dockerfile --tag bro-fixe/web:$(date +%s)
+      run: docker build ./src --file Web/Dockerfile --tag bro-fixe/web:$(date +%s)
