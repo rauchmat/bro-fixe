@@ -4,7 +4,6 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
 
 jobs:
 
@@ -13,6 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build ./src --file Web/Dockerfile --tag bro-fixe/web:$(date +%s)
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Print current directory
+      run: pwd
+      
+    - name: List file contents
+      run: |
+        ls ${{ github.workspace }}
+      
+    - name: Build the Web Docker image
+      run: docker build ./src/ --file Web/Dockerfile --tag bro-fixe/web:$(date +%s)
