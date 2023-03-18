@@ -17,6 +17,14 @@ services:
     volumes:
       - brofixe-sqldata:/var/opt/mssql
   
+  db:
+    build:
+      context: .
+      dockerfile: Database/Dockerfile
+    environment:
+      - NETCORE_ENVIRONMENT=Development
+      - Data:ConnectionString=${BROFIXE_SQL_DB:-Server=sql;Database=BroFixe;User Id=sa;Password=Pass@word;TrustServerCertificate=True}
+
   web:
     build:
       context: .

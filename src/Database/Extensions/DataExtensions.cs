@@ -1,13 +1,16 @@
 ﻿using BroFixe.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
-namespace BroFixe.Web.Extensions;
+namespace BroFixe.Database.Extensions;
 
 public static class DataExtensions
 {
-    public static async Task<WebApplication> ApplyMigrationsAndSeedData(this WebApplication app)
+    public static async Task<IHost> ApplyMigrationsAndSeedData(this IHost host)
     {
-        using var scope = app.Services.CreateScope();
+        using var scope = host.Services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<BroFixeContext>();
         await db.Database.MigrateAsync();
 
@@ -15,6 +18,6 @@ public static class DataExtensions
         var logger = scope.ServiceProvider.GetRequiredService<ILogger<BroFixeContextSeed>>();
 
         await seeder.SeedAsync(db, logger);
-        return app;
+        return host;
     }
 }

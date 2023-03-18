@@ -8,7 +8,13 @@ services:
   sql:
     image: mcr.microsoft.com/mssql/server:2022-latest
   
+  db:
+    image: ${REGISTRY:-rauchmat}/bro-fixe-db:${TAG:-latest}
+    depends_on:
+      - sql
+  
   web:
     image: ${REGISTRY:-rauchmat}/bro-fixe-web:${TAG:-latest}
     depends_on:
       - sql
+      - db

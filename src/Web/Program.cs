@@ -1,12 +1,10 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using BroFixe.Infrastructure.Data;
-using BroFixe.Web.Extensions;
+using BroFixe.Web;
 using BroFixe.Web.Infrastructure.OpenApi;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using Serilog.Core;
-using Constants = BroFixe.Web.Constants;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -18,18 +16,20 @@ try
     var builder = WebApplication.CreateBuilder(args);
     Log.Logger = CreateLoggerConfiguration(builder).CreateLogger();
     builder.Host.UseSerilog();
+    builder.Host.ConfigureServices((context, services) =>
+    {
+        var config = context.Configuration;
+        ConfigureOptions(config, services);
+    });
     builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
-        .ConfigureContainer<ContainerBuilder>(containerBuilder =>
-        {
-            //containerBuilder.RegisterModule<>();
-        });
+        .ConfigureContainer<ContainerBuilder>(ConfigureContainer);
+    builder.Host.ConfigureServices(ConfigureServices);
 
-    // Add services to the container.
+    var dataOptions = new DataOptions();
+    builder.Configuration.GetRequiredSection(DataOptions.SectionName).Bind(dataOptions);
+    Log.Logger.Information("Using ConnectionString {ConnectionString}", dataOptions.ConnectionString);
 
-    var connectionString = builder.Configuration["Data:ConnectionString"];
-    Log.Logger.Information("Using ConnectionString {ConnectionString}", connectionString);
-
-    builder.Services.AddDbContext<BroFixeContext>(options => options.UseSqlServer(connectionString));
+    builder.Services.AddDbContext<BroFixeContext>(options => options.UseSqlServer(dataOptions.ConnectionString));
     builder.Services.AddControllersWithViews();
     builder.Services.AddSwaggerDocument();
     builder.Services.ConfigureSwagger(WebOpenApiDefinitions.All);
@@ -65,10 +65,7 @@ try
 
     app.MapFallbackToFile("index.html");
 
-    Log.Information("Applying migrations ({ApplicationContext})...", Constants.AppName);
-    await app.ApplyMigrationsAndSeedData();
-
-    app.Run();
+    await app.RunAsync();
     return 0;
 }
 catch (Exception ex)
@@ -96,4 +93,18 @@ LoggerConfiguration CreateLoggerConfiguration(WebApplicationBuilder webApplicati
         loggerConfiguration.WriteTo.Seq(seqUrl);
 
     return loggerConfiguration;
+}
+
+void ConfigureOptions(IConfiguration configuration, IServiceCollection serviceCollection)
+{
+    serviceCollection.Configure<DataOptions>(configuration.GetSection(DataOptions.SectionName));
+}
+
+void ConfigureContainer(HostBuilderContext hostBuilderContext, ContainerBuilder containerBuilder)
+{
+    containerBuilder.RegisterAssemblyModules<DataModule>();
+}
+
+void ConfigureServices(HostBuilderContext context, IServiceCollection serviceCollection)
+{
 }

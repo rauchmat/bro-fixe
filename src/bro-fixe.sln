@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Tests.Integration", "Web.Tests.Integration\Web.Tests.Integration.csproj", "{1182C3D1-F9C0-4BD4-A053-FA47C3EE8769}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{921602A1-D283-458F-9037-E0C133B518C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{1182C3D1-F9C0-4BD4-A053-FA47C3EE8769}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1182C3D1-F9C0-4BD4-A053-FA47C3EE8769}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1182C3D1-F9C0-4BD4-A053-FA47C3EE8769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{921602A1-D283-458F-9037-E0C133B518C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{921602A1-D283-458F-9037-E0C133B518C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{921602A1-D283-458F-9037-E0C133B518C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{921602A1-D283-458F-9037-E0C133B518C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

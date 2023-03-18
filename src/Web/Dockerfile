@@ -13,6 +13,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
 
 WORKDIR /src
 COPY "bro-fixe.sln" "bro-fixe.sln"
+COPY "Database/Database.csproj" "Database/Database.csproj"
 COPY "Domain/Domain.csproj" "Domain/Domain.csproj"
 COPY "Infrastructure/Infrastructure.csproj" "Infrastructure/Infrastructure.csproj"
 COPY "Web/Web.csproj" "Web/Web.csproj"
