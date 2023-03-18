@@ -136,5 +136,8 @@
   }
 }
   },
-  "defaultProject": "bro-fixe"
+  "defaultProject": "bro-fixe",
+  "cli": {
+    "analytics": "389d2019-b622-4adc-a790-868c61bc5f17"
+  }
 }

@@ -6,7 +6,7 @@ import {filter} from "rxjs";
   selector: 'app-root',
   template: `
     <mat-toolbar color="primary">
-      <img src="/assets/brofixe.png" alt="" class="logo"/>
+      <img src="/assets/brofixe_small.png" alt="" class="logo"/>
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>menu</mat-icon>
       </button>
