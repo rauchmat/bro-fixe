@@ -9,9 +9,6 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
   
   web:
-    image: ${REGISTRY:-bro-fixe}/web:${PLATFORM:-linux}-${TAG:-latest}
-    build:
-      context: .
-      dockerfile: Web/Dockerfile
+    image: ${REGISTRY:-rauchmat}/bro-fixe-web:${TAG:-latest}
     depends_on:
       - sql
