@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:
+  
+  seq:
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "5701:80"
+  
+  sql:
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    ports:
+      - "5433:1433"
+    volumes:
+      - brofixe-sqldata:/var/opt/mssql
+  
+  db:
+    build:
+      context: .
+      dockerfile: Database/Dockerfile
+    environment:
+      - NETCORE_ENVIRONMENT=Development
+      - Data:ConnectionString=${BROFIXE_SQL_DB:-Server=sql;Database=BroFixe;User Id=sa;Password=Pass@word;TrustServerCertificate=True}
+
+  web:
+    build:
+      context: .
+      dockerfile: Web/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - Data:ConnectionString=${BROFIXE_SQL_DB:-Server=sql;Database=BroFixe;User Id=sa;Password=Pass@word;TrustServerCertificate=True}
+      - Logging:SeqUrl=http://seq
+    #  - PATH_BASE=/brofixe-web
+    #  - PORT=80
+    ports:
+      - "5700:80"
+
+volumes:
+  brofixe-sqldata:
+    external: false
