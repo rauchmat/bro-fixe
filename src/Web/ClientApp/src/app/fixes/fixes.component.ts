@@ -38,21 +38,14 @@ import {FixeModel} from "../../api";
       </div>
   `,
   styles: [`
-    .fixes-container {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      align-content: space-around;
-      align-items: stretch;
-      gap: 2em;
-      max-width: 1000px;
+    :host {
+      width: 100%;
     }
 
-    .fixe-card {
-      margin-bottom: 1em;
-      max-width: 400px;
-      width: 100%;
+    .fixes-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+      gap: 1rem;
     }
 
     .fixe-card mat-card {
@@ -68,7 +61,7 @@ import {FixeModel} from "../../api";
     }
 
     mat-card-content {
-      padding: 1em;
+      padding: 1rem;
     }
   `
   ]
