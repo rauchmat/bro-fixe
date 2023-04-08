@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Navigation, Router} from "@angular/router";
 import {FixesService} from "./fixes.service";
 import {BroModel, FixeModel} from "../../api";
 import {BrosService} from "../admin/bros/bros.service";
@@ -46,8 +46,8 @@ import {BrosService} from "../admin/bros/bros.service";
           </mat-selection-list>
 
           <div class="button-container" class="full-width">
-            <button mat-raised-button color="primary" type="submit">Speichern</button>
-            <button mat-raised-button>Abbrechen</button>
+            <button mat-raised-button color="primary" type="submit" routerLink="..">Speichern</button>
+            <button mat-raised-button routerLink="..">Zurück</button>
           </div>
         </form>
       </div>
@@ -141,6 +141,7 @@ export class FixeDetailsComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private fixesService: FixesService,
     private brosService: BrosService) {
   }
@@ -167,5 +168,9 @@ export class FixeDetailsComponent {
 
   private getBros() {
     this.brosService.getAllBros().subscribe(bros => this.allBros = bros);
+  }
+
+  onSave() : void {
+    this.router.navigate(['..']);
   }
 }
