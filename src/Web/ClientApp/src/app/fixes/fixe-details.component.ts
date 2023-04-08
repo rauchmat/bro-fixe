@@ -14,7 +14,6 @@ import {BrosService} from "../admin/bros/bros.service";
         <h2>{{fixe.title}}</h2>
 
         <form [formGroup]="fixeForm">
-
           <mat-form-field>
             <mat-label>Titel</mat-label>
             <input matInput readonly formControlName="title">
@@ -39,14 +38,14 @@ import {BrosService} from "../admin/bros/bros.service";
             <mat-icon matSuffix>person</mat-icon>
           </mat-form-field>
 
-          <mat-selection-list #bros>
+          <mat-selection-list #bros class="full-width bros">
             <mat-list-option *ngFor="let bro of allBros">
               <img matListItemAvatar [src]="bro.avatarUrl" [alt]="'Bild von ' + bro.nickname">
               <div matListItemTitle>{{bro.nickname}}</div>
             </mat-list-option>
           </mat-selection-list>
 
-          <div class="button-container">
+          <div class="button-container" class="full-width">
             <button mat-raised-button color="primary" type="submit">Speichern</button>
             <button mat-raised-button>Abbrechen</button>
           </div>
@@ -55,31 +54,39 @@ import {BrosService} from "../admin/bros/bros.service";
     </div>
   `,
   styles: [`
-    .form-box {
-      margin: 2rem 2rem;
+    :host {
+      width: 100%;
       max-width: 800px;
+    }
+
+    .form-box {
       background-color: white
     }
 
     .form-container {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
+      padding: 2rem;
     }
 
-    .form-container > * {
-      margin: 2rem;
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1em;
+    }
+
+    .full-width {
+      grid-column: 1 / 3;
+    }
+
+    .bros {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
     }
 
     .header-image {
       width: 100%;
-      max-height: 320px;
+      max-height: 450px;
       object-fit: cover;
       object-position: bottom;
-    }
-
-    mat-form-field {
-      width: 100%;
     }
 
     .button-container {
@@ -94,9 +101,24 @@ import {BrosService} from "../admin/bros/bros.service";
       margin-right: 1rem;
     }
 
-    @media screen and (max-width: 400px){
-      .form-box {
-        margin: 1rem;
+    @media screen and (max-width: 575px) {
+      .form-container {
+        padding: 1rem;
+      }
+
+      form {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 0.5em;
+      }
+
+      .full-width {
+        grid-column: 1 / 2;
+      }
+
+      .bros {
+        display: grid;
+        grid-template-columns: 1fr;
       }
 
       .header-image {

@@ -5,35 +5,50 @@ import {filter} from "rxjs";
 @Component({
   selector: 'app-root',
   template: `
-    <mat-toolbar color="primary">
-      <img src="/assets/brofixe_small.png" alt="" class="logo"/>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span>{{title}}</span>
-      <span class="spacer"></span>
-      <button mat-icon-button>
-        <mat-icon>volunteer_activism</mat-icon>
-      </button>
-      <button mat-icon-button>
-        <mat-icon>account_circle</mat-icon>
-      </button>
-    </mat-toolbar>
-    <mat-menu #menu="matMenu">
-      <button *ngFor="let menuItem of menuItems" mat-menu-item
-              [routerLink]="menuItem.link" (click)="onMenuItemClick(menuItem.title)">
-        {{menuItem.title}}
-      </button>
-    </mat-menu>
-    <router-outlet></router-outlet>
+      <mat-toolbar color="primary">
+          <img src="/assets/brofixe_small.png" alt="" class="logo"/>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>menu</mat-icon>
+          </button>
+          <span>{{title}}</span>
+          <span class="spacer"></span>
+          <button mat-icon-button>
+              <mat-icon>volunteer_activism</mat-icon>
+          </button>
+          <button mat-icon-button>
+              <mat-icon>account_circle</mat-icon>
+          </button>
+      </mat-toolbar>
+      <mat-menu #menu="matMenu">
+          <button *ngFor="let menuItem of menuItems" mat-menu-item
+                  [routerLink]="menuItem.link" (click)="onMenuItemClick(menuItem.title)">
+              {{menuItem.title}}
+          </button>
+      </mat-menu>
+      <section class="content">
+          <router-outlet></router-outlet>
+      </section>
   `,
   styles: [`
+    .content {
+      padding: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .logo {
       height: 80%;
     }
 
     .spacer {
       flex: 1 1 auto;
+    }
+
+    @media screen and (max-width: 575px){
+      .content {
+        padding: 1em;
+      }
     }
   `]
 })
