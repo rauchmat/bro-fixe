@@ -134,11 +134,11 @@
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false
+            }
+          }
         }
       }
     }
-  }
-}
   },
   "defaultProject": "bro-fixe",
   "cli": {
