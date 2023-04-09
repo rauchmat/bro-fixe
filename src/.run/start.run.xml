@@ -1,0 +1,11 @@
+﻿<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="start" type="js.build_tools.npm" nameIsGenerated="true">
+    <package-json value="$PROJECT_DIR$/Web/ClientApp/package.json" />
+    <command value="start" />
+    <node-interpreter value="project" />
+    <envs>
+      <env name="ASPNETCORE_HTTPS_PORT" value="44366" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>
