@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, isDevMode} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -14,6 +14,7 @@ import {OrganizerModule} from "./organizer/organizer.module";
 import {FixesModule} from "./fixes/fixes.module";
 import {ApiModule} from "./api/api.module";
 import {API_BASE_URL} from "../api";
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,13 @@ import {API_BASE_URL} from "../api";
     MatMenuModule,
     FixesModule,
     OrganizerModule,
-    ApiModule
+    ApiModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     {provide: API_BASE_URL, useValue: '.'}
