@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs";
+import {SwPush} from "@angular/service-worker";
 
 @Component({
   selector: 'app-root',
@@ -53,6 +54,8 @@ import {filter} from "rxjs";
   `]
 })
 export class AppComponent {
+
+  readonly VAPID_PUBLIC_KEY = "BLhWMmLF1PqZlp2u6QdZGUxB4B1icwHL-5TRHnyyMRMYS6CatEvoVSUCuxdb6_s4E5_G1FcRPT3TqW9M784IytA"
   menuItems: MenuItem[] = [
     {title: "Fixes", link: "/fixes"},
     {title: "Organisator", link: "/organizer"},
@@ -60,13 +63,19 @@ export class AppComponent {
   ];
   title!: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private swPush: SwPush) {
   }
 
   ngOnInit() {
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(e => this.updateSelectedItem((e as NavigationEnd).url.split("#")[0]));
+
+    this.swPush.requestSubscription({
+      serverPublicKey: this.VAPID_PUBLIC_KEY
+    })
+      .then(sub => console.log("Successfully subscribed to push notifications"))
+      .catch(err => console.warn("Could not subscribe to notifications", err));
   }
 
   onMenuItemClick(title: string) {
