@@ -8,55 +8,72 @@ import {BrosService} from "../admin/bros/bros.service";
 @Component({
   selector: 'app-fixe-details',
   template: `
-    <div class="form-box mat-elevation-z3">
-      <img class="header-image" [src]="fixe.backgroundUrl" *ngIf="fixe.backgroundUrl != null" alt=""/>
-      <div class="form-container">
-        <h2>{{fixe.title}}</h2>
-
-        <form [formGroup]="fixeForm">
-          <mat-form-field>
-            <mat-label>Titel</mat-label>
-            <input matInput readonly formControlName="title">
-
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Ort</mat-label>
-            <input matInput readonly formControlName="location">
-            <mat-icon matSuffix>location_on</mat-icon>
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Start</mat-label>
-            <input matInput readonly formControlName="start">
-            <mat-icon matSuffix>schedule</mat-icon>
-          </mat-form-field>
-
-          <mat-form-field formGroupName="organizer">
-            <mat-label>Organisator</mat-label>
-            <input matInput readonly formControlName="nickname">
-            <mat-icon matSuffix>person</mat-icon>
-          </mat-form-field>
-
-          <mat-selection-list #bros class="full-width bros">
-            <mat-list-option *ngFor="let bro of allBros">
-              <img matListItemAvatar [src]="bro.avatarUrl" [alt]="'Bild von ' + bro.nickname">
-              <div matListItemTitle>{{bro.nickname}}</div>
-            </mat-list-option>
-          </mat-selection-list>
-
-          <div class="button-container" class="full-width">
-            <button mat-raised-button color="primary" type="submit" routerLink="..">Speichern</button>
-            <button mat-raised-button routerLink="..">Zurück</button>
+      <div class="form-box mat-elevation-z3">
+          <div class="header-image">
+              <img class="header-image" [src]="fixe.backgroundUrl" *ngIf="fixe.backgroundUrl != null" alt=""/>
+              <button mat-fab color="primary" class="upload-button" (click)="fileInput.click()">
+                <mat-icon>add_photo_alternate</mat-icon>
+                <input #fileInput type="file" (change)="onUploadFoto($event)" style="display:none;" />
+              </button>
           </div>
-        </form>
+          <div class="form-container">
+              <h2>{{fixe.title}}</h2>
+
+              <form [formGroup]="fixeForm">
+                  <mat-form-field>
+                      <mat-label>Titel</mat-label>
+                      <input matInput readonly formControlName="title">
+
+                  </mat-form-field>
+
+                  <mat-form-field>
+                      <mat-label>Ort</mat-label>
+                      <input matInput readonly formControlName="location">
+                      <mat-icon matSuffix>location_on</mat-icon>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                      <mat-label>Start</mat-label>
+                      <input matInput readonly formControlName="start">
+                      <mat-icon matSuffix>schedule</mat-icon>
+                  </mat-form-field>
+
+                  <mat-form-field formGroupName="organizer">
+                      <mat-label>Organisator</mat-label>
+                      <input matInput readonly formControlName="nickname">
+                      <mat-icon matSuffix>person</mat-icon>
+                  </mat-form-field>
+
+                  <mat-selection-list #bros class="full-width bros">
+                      <mat-list-option *ngFor="let bro of allBros">
+                          <img matListItemAvatar [src]="bro.avatarUrl" [alt]="'Bild von ' + bro.nickname">
+                          <div matListItemTitle>{{bro.nickname}}</div>
+                      </mat-list-option>
+                  </mat-selection-list>
+
+                  <div class="button-container" class="full-width">
+                      <button mat-raised-button color="primary" type="submit" routerLink="..">Speichern</button>
+                      <button mat-raised-button routerLink="..">Zurück</button>
+                  </div>
+              </form>
+          </div>
       </div>
-    </div>
   `,
   styles: [`
     :host {
       width: 100%;
       max-width: 800px;
+    }
+
+    .header-image {
+      position: relative;
+    }
+
+    .header-image .upload-button {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 1rem;
     }
 
     .form-box {
@@ -172,5 +189,9 @@ export class FixeDetailsComponent {
 
   onSave() : void {
     this.router.navigate(['..']);
+  }
+
+  onUploadFoto($event: Event) {
+    console.log($event)
   }
 }
