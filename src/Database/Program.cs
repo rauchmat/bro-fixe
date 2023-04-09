@@ -2,7 +2,6 @@
 using Autofac.Extensions.DependencyInjection;
 using BroFixe.Database.Extensions;
 using BroFixe.Infrastructure.Data;
-using BroFixe.Infrastructure.PushNotifications;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -45,7 +44,6 @@ finally
 void ConfigureOptions(IConfiguration configuration, IServiceCollection serviceCollection)
 {
     serviceCollection.Configure<DataOptions>(configuration.GetSection(DataOptions.SectionName));
-    serviceCollection.Configure<PushNotificationsOptions>(configuration.GetSection(PushNotificationsOptions.SectionName));
 }
 
 void ConfigureContainer(HostBuilderContext hostBuilderContext, ContainerBuilder containerBuilder)

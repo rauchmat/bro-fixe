@@ -1,8 +1,11 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using BroFixe.Infrastructure.Data;
+using BroFixe.Infrastructure.PushNotifications;
 using BroFixe.Web;
 using BroFixe.Web.Infrastructure.OpenApi;
+using BroFixe.Web.Infrastructure.UnitOfWork;
+using Lib.Net.Http.WebPush;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -33,7 +36,7 @@ try
     builder.Services.AddControllersWithViews();
     builder.Services.AddSwaggerDocument();
     builder.Services.ConfigureSwagger(WebOpenApiDefinitions.All);
-
+    builder.Services.AddHttpClient<PushServiceClient>();
 
     var app = builder.Build();
 
@@ -57,7 +60,7 @@ try
     app.UseOpenApi();
     app.UseSwaggerUi3();
     app.UseRouting();
-
+    app.UseMiddleware<UnitOfWorkMiddleware>();
 
     app.MapControllerRoute(
         name: "default",
@@ -98,11 +101,13 @@ LoggerConfiguration CreateLoggerConfiguration(WebApplicationBuilder webApplicati
 void ConfigureOptions(IConfiguration configuration, IServiceCollection serviceCollection)
 {
     serviceCollection.Configure<DataOptions>(configuration.GetSection(DataOptions.SectionName));
+    serviceCollection.Configure<PushNotificationsOptions>(
+        configuration.GetSection(PushNotificationsOptions.SectionName));
 }
 
 void ConfigureContainer(HostBuilderContext hostBuilderContext, ContainerBuilder containerBuilder)
 {
-    containerBuilder.RegisterAssemblyModules<DataModule>();
+    containerBuilder.RegisterAssemblyModules(typeof(DataModule).Assembly);
 }
 
 void ConfigureServices(HostBuilderContext context, IServiceCollection serviceCollection)

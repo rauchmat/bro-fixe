@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {TestClient} from "../../api";
 
 @Component({
   selector: 'app-admin',
@@ -6,10 +7,17 @@ import { Component } from '@angular/core';
     <p>
       admin works!
     </p>
+
+    <button mat-raised-button color="primary" (click)="onNotificationTest()">Notification Test</button>
   `,
-  styles: [
-  ]
+  styles: []
 })
 export class AdminComponent {
 
+  constructor(private testClient: TestClient) {
+  }
+
+  onNotificationTest() {
+    this.testClient.testNotifications().subscribe();
+  }
 }

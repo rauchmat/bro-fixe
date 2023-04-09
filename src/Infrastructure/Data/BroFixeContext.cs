@@ -24,5 +24,8 @@ public class BroFixeContext : DbContext
             .WithMany()
             .OnDelete(DeleteBehavior.Restrict)
             .IsRequired();
+
+        modelBuilder.Entity<PersistentPushSubscription>()
+            .HasIndex(p => p.Endpoint);
     }
 }

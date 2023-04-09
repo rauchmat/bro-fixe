@@ -12,7 +12,8 @@ import {FixesService} from "../fixes/fixes.service";
   ],
   providers: [
     {provide: FixesService, useClass: MockFixesService},
-    {provide: BrosService, useClass: MockBrosService}]
+    {provide: BrosService, useClass: MockBrosService},
+  ]
 })
 export class MocksModule {
 }
