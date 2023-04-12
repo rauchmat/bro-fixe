@@ -15,6 +15,7 @@ import {FixesModule} from "./fixes/fixes.module";
 import {ApiModule} from "./api/api.module";
 import {API_BASE_URL} from "../api";
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { AuthConfigModule } from './auth/auth-config.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    AuthConfigModule
   ],
   providers: [
     {provide: API_BASE_URL, useValue: '.'}

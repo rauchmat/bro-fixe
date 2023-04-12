@@ -3,6 +3,7 @@ import {NavigationEnd, Router} from "@angular/router";
 import {catchError, filter, from, mergeMap, tap, throwError} from "rxjs";
 import {SwPush} from "@angular/service-worker";
 import {PushSubscription, PushSubscriptionsClient} from "../api";
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ import {PushSubscription, PushSubscriptionsClient} from "../api";
       <button mat-icon-button>
         <mat-icon>volunteer_activism</mat-icon>
       </button>
-      <button mat-icon-button (click)="subscribeToPushNotifications()">
+      <button mat-icon-button (click)="logout()">
         <mat-icon>account_circle</mat-icon>
       </button>
     </mat-toolbar>
@@ -64,7 +65,8 @@ export class AppComponent {
 
   constructor(private router: Router,
               private swPush: SwPush,
-              private pushSubscriptionsClient: PushSubscriptionsClient) {
+              private pushSubscriptionsClient: PushSubscriptionsClient,
+              public oidcSecurityService: OidcSecurityService) {
   }
 
   ngOnInit() {
@@ -73,6 +75,10 @@ export class AppComponent {
         filter(event => event instanceof NavigationEnd),
         tap(e => this.updateSelectedItem((e as NavigationEnd).url.split("#")[0]))
       );
+  }
+
+  logout() {
+    this.oidcSecurityService.logoff().subscribe((result) => console.log("Successfully logged out", result));
   }
 
   onMenuItemClick(title: string) {
