@@ -6,7 +6,10 @@ using BroFixe.Web;
 using BroFixe.Web.Infrastructure.OpenApi;
 using BroFixe.Web.Infrastructure.UnitOfWork;
 using Lib.Net.Http.WebPush;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using NSwag;
+using NSwag.Generation.Processors.Security;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()
@@ -34,7 +37,18 @@ try
 
     builder.Services.AddDbContext<BroFixeContext>(options => options.UseSqlServer(dataOptions.ConnectionString));
     builder.Services.AddControllersWithViews();
-    builder.Services.AddSwaggerDocument();
+    builder.Services.AddSwaggerDocument(document =>
+    {
+        document.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT"));
+        document.DocumentProcessors.Add(new SecurityDefinitionAppender("JWT", new OpenApiSecurityScheme
+        {
+            Type = OpenApiSecuritySchemeType.ApiKey,
+            Name = "Authorization",
+            In = OpenApiSecurityApiKeyLocation.Header,
+            Description = "Insert your JWT."
+        }));
+
+    });
     builder.Services.ConfigureSwagger(WebOpenApiDefinitions.All);
     builder.Services.AddHttpClient<PushServiceClient>();
 
@@ -61,6 +75,8 @@ try
     app.UseSwaggerUi3();
     app.UseRouting();
     app.UseMiddleware<UnitOfWorkMiddleware>();
+    app.UseAuthentication();
+    app.UseAuthorization();
 
     app.MapControllerRoute(
         name: "default",
@@ -110,6 +126,16 @@ void ConfigureContainer(HostBuilderContext hostBuilderContext, ContainerBuilder 
     containerBuilder.RegisterAssemblyModules(typeof(DataModule).Assembly);
 }
 
-void ConfigureServices(HostBuilderContext context, IServiceCollection serviceCollection)
+void ConfigureServices(HostBuilderContext context, IServiceCollection services)
 {
+    services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+    }).AddJwtBearer(options =>
+    {
+        options.Authority = context.Configuration["JwtBearer:Authority"];
+        options.Audience = context.Configuration["JwtBearer:Audience"];
+    });
 }

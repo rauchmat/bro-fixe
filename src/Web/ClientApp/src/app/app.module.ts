@@ -14,8 +14,10 @@ import {OrganizerModule} from "./organizer/organizer.module";
 import {FixesModule} from "./fixes/fixes.module";
 import {ApiModule} from "./api/api.module";
 import {API_BASE_URL} from "../api";
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { AuthConfigModule } from './auth/auth-config.module';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {AuthConfigModule} from './auth/auth-config.module';
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {AuthInterceptor} from "angular-auth-oidc-client";
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { AuthConfigModule } from './auth/auth-config.module';
     AuthConfigModule
   ],
   providers: [
-    {provide: API_BASE_URL, useValue: '.'}
+    {provide: API_BASE_URL, useValue: '.'},
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

@@ -20,7 +20,7 @@ export class CallbackComponent {
 
   ngOnInit() {
     this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken}) => {
-      if (isAuthenticated) console.log("Successfully logged in", userData)
+      if (isAuthenticated) console.log("Successfully logged in", userData, accessToken)
     });
   }
 }
