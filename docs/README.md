@@ -1,2 +1,2 @@
 # Bro Fixe App
-![Bro Fixe logo](/bro-fixe/assets/logo.png)
+![Bro Fixe logo](/assets/img/brofixe_transparent.png)
